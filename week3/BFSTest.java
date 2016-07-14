@@ -1,8 +1,9 @@
-package week1;
+package week3;
+
+import week1.UndirectedGraph;
 import java.util.Scanner;
 
-public class ConnectedComponentsTest {
-
+public class BFSTest {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
@@ -14,10 +15,12 @@ public class ConnectedComponentsTest {
             y = scanner.nextInt();
             g.addEdge(x, y);
         }
-        System.out.println(new ConnectedComponents(g).run());
+        int x = scanner.nextInt();
+        int y = scanner.nextInt();
+        BFS bfs = new BFS(x, g);
+        System.out.println(bfs.distTo(y));
     }
 }
-
 
 
 

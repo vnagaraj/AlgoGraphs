@@ -22,7 +22,7 @@ class ConnectedComponents {
 
     private void explore(int vertex){
         visited[vertex] = true;
-        for (int neighbor : graph.adj[vertex]){
+        for (int neighbor : graph.adj(vertex)){
             if (!visited[neighbor]){
                 explore(neighbor);
             }

@@ -1,7 +1,9 @@
-package week1;
+package week3;
+
+import week1.UndirectedGraph;
 import java.util.Scanner;
 
-public class ConnectedComponentsTest {
+public class BipartiteTest {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -14,9 +16,16 @@ public class ConnectedComponentsTest {
             y = scanner.nextInt();
             g.addEdge(x, y);
         }
-        System.out.println(new ConnectedComponents(g).run());
+        BFS bfs = new BFS(1, g);
+        bfs.run();
+        if (bfs.isBipartite){
+            System.out.println(1);
+        }else{
+            System.out.println(0);
+        }
     }
 }
+
 
 
 

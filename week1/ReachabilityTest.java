@@ -7,7 +7,7 @@ public class ReachabilityTest {
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
         int m = scanner.nextInt();
-        UndirectedGraph g = new UndirectedGraph(n, m);
+        UndirectedGraph g = new UndirectedGraph(n);
         for (int i = 0; i < m; i++) {
             int x, y;
             x = scanner.nextInt();
