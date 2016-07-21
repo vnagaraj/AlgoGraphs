@@ -2,7 +2,7 @@ package week4;
 
 class BellmanFord{
     private BellmanWeightedDirectedGraph graph;
-    private Integer[][] A;
+    private Integer[] A;
 
     BellmanFord(BellmanWeightedDirectedGraph graph){
         this.graph = graph;
@@ -14,32 +14,32 @@ class BellmanFord{
 
     public int checkCycle(){
         if (run()){
-           return 1;
+            return 1;
         }
         return 0;
     }
 
     private boolean run(){
         int sourceVertex = graph.getVertices()-1;
-        A = new Integer[graph.getEdges()][graph.getVertices()];
+        A = new Integer[graph.getVertices()];
         for(int vertex=0; vertex < graph.getVertices(); vertex++){
             if (vertex == sourceVertex){
-                A[0][vertex] = 0;
+                A[vertex] = 0;
             }else{
-                A[0][vertex] = Integer.MAX_VALUE;
+                A[vertex] = Integer.MAX_VALUE;
             }
         }
         int lastIteration = graph.getVertices(); //checking cycle
         boolean changed = false;
         for (int edge =1; edge <=graph.getVertices(); edge++) {
             for (int vertex = 0; vertex < graph.getVertices(); vertex++) {
-                Integer prevValue = A[edge-1][vertex];
-                A[edge][vertex] = Math.min(A[edge - 1][vertex], getMinFromInDegree(edge, vertex));
+                Integer prevValue = A[vertex];
+                A[vertex] = Math.min(A[vertex], getMinFromInDegree(edge, vertex));
                 if (!changed) {
                     if (prevValue == null){
                         changed = true;
                     }
-                    else if (!prevValue .equals(A[edge][vertex])) {
+                    else if (!prevValue .equals(A[vertex])) {
                         changed = true;
                     }
                 }
@@ -65,10 +65,10 @@ class BellmanFord{
         int min = Integer.MAX_VALUE;
         for (Edge inDegree: this.graph.getInDegreeVertices(vertex)){
             int val = -1;
-            if (A[edge-1][inDegree.startVertex] == Integer.MAX_VALUE){
+            if (A[inDegree.startVertex] == Integer.MAX_VALUE){
                 val = Integer.MAX_VALUE;
             }else{
-                val = A[edge-1][inDegree.startVertex] + inDegree.weight;
+                val = A[inDegree.startVertex] + inDegree.weight;
             }
             if (min > val){
                 min = val;
