@@ -1,46 +1,102 @@
 package week4;
 
+import week3.Queue;
+import java.util.ArrayList;
+
 class BellmanFord{
     private BellmanWeightedDirectedGraph graph;
-    private Integer[] A;
+    private Long[] A;
+    private Integer sourceVertex = null;
+    ArrayList<Integer> cycleVertices = null;
 
-    BellmanFord(BellmanWeightedDirectedGraph graph){
+
+    BellmanFord(BellmanWeightedDirectedGraph graph, Integer sourceVertex){
         this.graph = graph;
-        //add virtual node to graph connecting to all other nodes
-        for (int i = 0; i < graph.getVertices()-1; i++){
-            graph.addEdge(graph.getVertices()-1, i, 0);
+        this.sourceVertex = sourceVertex;
+        cycleVertices = new ArrayList<>();
+        boolean cycle = isCycle();
+        if (cycle){
+            boolean[] visited  = new boolean[graph.getVertices()];
+            //to compute vertices in neg cycle using BFS subroutine
+            for (int vertex: cycleVertices) {
+                if (!visited[vertex]) {
+                    bfs(vertex, visited);
+                }
+            }
         }
     }
 
-    public int checkCycle(){
-        if (run()){
-            return 1;
+    private void bfs(Integer startVertex, boolean[] visited) {
+        visited[startVertex] = true;
+        A[startVertex] = Long.MIN_VALUE;
+        Queue<Integer> queue = new Queue<Integer>();
+        queue.enqueue(startVertex);
+        while (!queue.isEmpty()) {
+            int vertex = queue.dequeue();
+            for (Edge edge : graph.adj(vertex)) {
+                int neighbor = edge.endVertex;
+                if (!visited[neighbor]) {
+                    visited[neighbor] = true;
+                    A[neighbor] = Long.MIN_VALUE;
+                    queue.enqueue(neighbor);
+                }
+            }
         }
-        return 0;
     }
 
-    private boolean run(){
-        int sourceVertex = graph.getVertices()-1;
-        A = new Integer[graph.getVertices()];
+    private void explore(int vertex, boolean[] visited){
+        visited[vertex] = true;
+        //to indicate part of negative cycle
+        A[vertex] = Long.MIN_VALUE;
+        for (Edge edge : graph.adj(vertex)){
+            int neighbor = edge.endVertex;
+            if (!visited[neighbor]){
+                explore(neighbor, visited);
+            }
+        }
+    }
+
+
+    public String dist(int vertex){
+        long val = A[vertex];
+        if (val == Long.MAX_VALUE){
+            //no path from source vertex
+            return "*";
+        }
+        if (val == Long.MIN_VALUE){
+            //vertex part of negative cycle
+            return "-";
+        }
+        return String.valueOf(val);
+    }
+
+    private boolean isCycle(){
+        A = new Long[graph.getVertices()];
         for(int vertex=0; vertex < graph.getVertices(); vertex++){
             if (vertex == sourceVertex){
-                A[vertex] = 0;
+                A[vertex] = 0L;
             }else{
-                A[vertex] = Integer.MAX_VALUE;
+                A[vertex] = Long.MAX_VALUE;
             }
         }
         int lastIteration = graph.getVertices(); //checking cycle
         boolean changed = false;
         for (int edge =1; edge <=graph.getVertices(); edge++) {
             for (int vertex = 0; vertex < graph.getVertices(); vertex++) {
-                Integer prevValue = A[vertex];
+                Long prevValue = A[vertex];
                 A[vertex] = Math.min(A[vertex], getMinFromInDegree(edge, vertex));
                 if (!changed) {
                     if (prevValue == null){
                         changed = true;
+                        if (edge == lastIteration) {
+                            cycleVertices.add(vertex);
+                        }
                     }
                     else if (!prevValue .equals(A[vertex])) {
                         changed = true;
+                        if (edge == lastIteration) {
+                            cycleVertices.add(vertex);
+                        }
                     }
                 }
             }
@@ -61,12 +117,12 @@ class BellmanFord{
         return false;
     }
 
-    private int getMinFromInDegree(int edge, int vertex){
-        int min = Integer.MAX_VALUE;
+    private long getMinFromInDegree(int edge, int vertex){
+        long min = Long.MAX_VALUE;
         for (Edge inDegree: this.graph.getInDegreeVertices(vertex)){
-            int val = -1;
-            if (A[inDegree.startVertex] == Integer.MAX_VALUE){
-                val = Integer.MAX_VALUE;
+            long val = -1;
+            if (A[inDegree.startVertex] == Long.MAX_VALUE){
+                val = Long.MAX_VALUE;
             }else{
                 val = A[inDegree.startVertex] + inDegree.weight;
             }

@@ -1,6 +1,6 @@
 package week3;
 
-class Queue<Item>{
+public class Queue<Item>{
 
     private Node first;
     private Node last;

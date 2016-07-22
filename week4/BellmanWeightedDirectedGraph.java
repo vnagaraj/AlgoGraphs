@@ -33,19 +33,10 @@ class BellmanWeightedDirectedGraph{
     }
 
     public void addEdge(int u, int v, int w){
-        //validateVertex(u);
-        //validateVertex(v);
         Edge edge = new Edge(u, v, w);
         adj[u].add(edge);
         inDeg[v].add(edge);
         edges += 1;
-    }
-
-    private void validateVertex(int u){
-        if (u < 1 || u >= adj.length ){
-            throw new RuntimeException("Vertex index out of bounds");
-        }
-
     }
 
 }
