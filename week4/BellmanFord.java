@@ -33,7 +33,7 @@ class BellmanFord{
         queue.enqueue(startVertex);
         while (!queue.isEmpty()) {
             int vertex = queue.dequeue();
-            for (Edge edge : graph.adj(vertex)) {
+            for (Edge edge : graph.adj[vertex]) {
                 int neighbor = edge.endVertex;
                 if (!visited[neighbor]) {
                     visited[neighbor] = true;
@@ -48,7 +48,8 @@ class BellmanFord{
         visited[vertex] = true;
         //to indicate part of negative cycle
         A[vertex] = Long.MIN_VALUE;
-        for (Edge edge : graph.adj(vertex)){
+
+        for (Edge edge : graph.adj[vertex]){
             int neighbor = edge.endVertex;
             if (!visited[neighbor]){
                 explore(neighbor, visited);
