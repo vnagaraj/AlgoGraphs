@@ -5,7 +5,7 @@ import java.util.HashMap;
 /**
  * Created by vnagarajan on 7/19/16.
  */
-class MinPQ<Key extends Comparable<Key>> {
+public class MinPQ<Key extends Comparable<Key>> {
     private int size = 0;
     private Key[] keys = null;
     private HashMap<Key, Integer> map; //maps Key to location in keys array
