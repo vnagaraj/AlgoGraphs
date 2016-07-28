@@ -1,5 +1,9 @@
 package week3;
 
+/**
+ * Queue data structure using link list
+ * @param <Item>
+ */
 public class Queue<Item>{
 
     private Node first;

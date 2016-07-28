@@ -1,14 +1,19 @@
 package week3;
 
 import week1.UndirectedGraph;
-
+/**
+ * BFS class - compute the shortest path in undirected graph with no edge weights
+ *
+ * @author Vivekanand Ganapathy Nagarajan
+ * @version 2.0 July 28th, 2016
+ */
 class BFS {
 
     private int startVertex;
     private UndirectedGraph graph;
     private Integer[] dist;
     private boolean[] visited;
-    public boolean isBipartite = true;
+    boolean isBipartite = true;
 
 
     BFS(int startVertex, UndirectedGraph graph) {
@@ -41,6 +46,11 @@ class BFS {
         }
     }
 
+    /**
+     * Get shortest distance to destination vertex
+     * @param destVertex destination vertex
+     * @return
+     */
     int distTo(int destVertex) {
         run();
         Integer val = dist[destVertex];
