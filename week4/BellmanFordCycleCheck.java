@@ -1,5 +1,11 @@
 package week4;
 
+/**
+ * BellmanFordCycleCheck class - BellmanFord's algorithm to check for negative cycle in graph
+ *
+ * @author Vivekanand Ganapathy Nagarajan
+ * @version 2.0 July 28th, 2016
+ */
 class BellmanFordCycleCheck {
     private BellmanWeightedDirectedGraph graph;
     private Integer[] A;
@@ -15,7 +21,7 @@ class BellmanFordCycleCheck {
 
     }
 
-    public int checkCycle(){
+    int checkCycle(){
         if (run()){
             return 1;
         }

@@ -2,12 +2,17 @@ package week4;
 
 import week3.Queue;
 import java.util.ArrayList;
-
+/**
+ * BellmanFord class - implement the BellmanFord's algorithm based to compute shortest distance
+ *
+ * @author Vivekanand Ganapathy Nagarajan
+ * @version 2.0 July 28th, 2016
+ */
 class BellmanFord{
     private BellmanWeightedDirectedGraph graph;
     private Long[] A;
     private Integer sourceVertex = null;
-    ArrayList<Integer> cycleVertices = null;
+    private ArrayList<Integer> cycleVertices = null;
 
 
     BellmanFord(BellmanWeightedDirectedGraph graph, Integer sourceVertex){
@@ -44,21 +49,8 @@ class BellmanFord{
         }
     }
 
-    private void explore(int vertex, boolean[] visited){
-        visited[vertex] = true;
-        //to indicate part of negative cycle
-        A[vertex] = Long.MIN_VALUE;
 
-        for (Edge edge : graph.adj[vertex]){
-            int neighbor = edge.endVertex;
-            if (!visited[neighbor]){
-                explore(neighbor, visited);
-            }
-        }
-    }
-
-
-    public String dist(int vertex){
+    String dist(int vertex){
         long val = A[vertex];
         if (val == Long.MAX_VALUE){
             //no path from source vertex

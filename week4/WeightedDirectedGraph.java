@@ -3,9 +3,12 @@ package week4;
 import java.util.ArrayList;
 
 /**
- * Created by vnagarajan on 7/19/16.
+ * WeightedDirectedGraph class - to store vertices and weighted edges to be used in Djikstra's algorithm
+ *
+ * @author Vivekanand Ganapathy Nagarajan
+ * @version 2.0 July 28th, 2016
  */
-public class WeightedDirectedGraph{
+class WeightedDirectedGraph{
 
     private int vertices; //no of vertices
     private int edges; //no of edges;
@@ -19,10 +22,20 @@ public class WeightedDirectedGraph{
         }
     }
 
+    /**
+     * Get vertex count
+     * @return count of vertices
+     */
     public int getVertices(){
         return vertices;
     }
 
+    /**
+     * Add  weighted edge to graph
+     * @param u vertex
+     * @param v vertex
+     * @param w weight of edge
+     */
     public void addEdge(int u, int v, int w){
         validateVertex(u);
         validateVertex(v);
@@ -31,6 +44,10 @@ public class WeightedDirectedGraph{
         edges += 1;
     }
 
+    /**
+     * Validate vertex range
+     * @param u vertex
+     */
     private void validateVertex(int u){
         if (u < 1 || u >= adj.length ){
             throw new RuntimeException("Vertex index out of bounds");

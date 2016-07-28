@@ -1,7 +1,10 @@
 package week4;
 
 /**
- * Created by vnagarajan on 7/19/16.
+ * Djikstra class - implement the Djikstra's algorithm based on PQ to implement shortest path in weighted graph from source vertex
+ *
+ * @author Vivekanand Ganapathy Nagarajan
+ * @version 2.0 July 28th, 2016
  */
 class Djikstra{
     private WeightedDirectedGraph graph;
@@ -11,6 +14,11 @@ class Djikstra{
     private int[] dist;
     private Vertex[] vertices;
 
+    /**
+     * Djiksta's contructor
+     * @param graph weighted directed graph
+     * @param sourceVertex source vertex
+     */
     Djikstra(WeightedDirectedGraph graph, int sourceVertex){
         this.graph = graph;
         this.sourceVertex = sourceVertex;
@@ -22,13 +30,21 @@ class Djikstra{
 
     }
 
-    public int dist(int destVertex){
+    /**
+     * return shortest distance from source to dest vertex
+     * @param destVertex destination vertex
+     * @return shortest distance
+     */
+    int dist(int destVertex){
         if (dist[destVertex] == Integer.MAX_VALUE){
             return -1;
         }
         return dist[destVertex];
     }
 
+    /**
+     * Run Djikstra's algorithm
+     */
     private void run(){
         //initialize steps
         for (int i = 1; i <= graph.getVertices(); i++){
@@ -65,6 +81,9 @@ class Djikstra{
 
     }
 
+    /**
+     * Internal Vertex class to be used in the priority queue
+     */
     private class Vertex implements Comparable<Vertex> {
         int startVertex;
         int key;

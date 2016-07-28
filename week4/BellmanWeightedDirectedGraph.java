@@ -1,13 +1,18 @@
 package week4;
 
 import java.util.ArrayList;
-
+/**
+ * BellmanFordWeightedDirectedGraph class - graph used by BellmanFord's algorithm
+ *
+ * @author Vivekanand Ganapathy Nagarajan
+ * @version 2.0 July 28th, 2016
+ */
 class BellmanWeightedDirectedGraph{
 
     private int vertices; //no of vertices
     private int edges; //no of edges;
     ArrayList<Edge>[] adj = null; //adjList
-    ArrayList<Edge>[] inDeg = null; //adjList
+    private ArrayList<Edge>[] inDeg = null; //adjList
 
     BellmanWeightedDirectedGraph(int vertices){
         this.vertices = vertices;
@@ -20,7 +25,7 @@ class BellmanWeightedDirectedGraph{
         }
     }
 
-    public ArrayList<Edge> getInDegreeVertices(int vertex){
+    ArrayList<Edge> getInDegreeVertices(int vertex){
         return inDeg[vertex];
     }
 

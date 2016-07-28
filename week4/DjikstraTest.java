@@ -1,8 +1,13 @@
 package week4;
 
-import java.util.*;
-
-public class DijkstraTest {
+import java.util.Scanner;
+/**
+ * DjikstraTest class - client class to test the Djikstra algorithm
+ *
+ * @author Vivekanand Ganapathy Nagarajan
+ * @version 2.0 July 28th, 2016
+ */
+public class DjikstraTest {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();

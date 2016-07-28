@@ -3,7 +3,10 @@ package week4;
 import java.util.Scanner;
 
 /**
- * Created by vnagarajan on 7/21/16.
+ * ShortestDistanceTest class - client class to test the BellmanFord algorithm
+ *
+ * @author Vivekanand Ganapathy Nagarajan
+ * @version 2.0 July 28th, 2016
  */
 public class ShortestDistanceTest {
     public static void main(String[] args) {
