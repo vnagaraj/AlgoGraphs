@@ -2,15 +2,24 @@ package week5;
 
 import week4.MinPQ;
 import java.util.HashMap;
+/**
+ * Prims class - implement the Prim's  algorithm(using heaps) to compute mim length of segment between points (Minimum Spanning Tree)
+ *
+ * @author Vivekanand Ganapathy Nagarajan
+ * @version 2.0 July 28th, 2016
+ */
 
-
-class Prim {
+class Prims {
     private PointDistanceGraph graph;
     private HashMap<Point, Boolean> visited;
     private MinPQ<Point> minPQ;
-    private double dist;
+    private double minDist; //min spanning tree distance
 
-    Prim(PointDistanceGraph graph) {
+    /**
+     * Prims constructor
+     * @param graph PointDistanceGraph
+     */
+    Prims(PointDistanceGraph graph) {
         this.graph = graph;
         visited = new HashMap<Point, Boolean>();
         minPQ = new MinPQ<Point>(graph.getPoints());
@@ -18,11 +27,17 @@ class Prim {
 
     }
 
-    public double dist(){
-        return dist;
+    /**
+     * Get the min spanning distance
+     * @return min distance
+     */
+    double dist(){
+        return minDist;
     }
 
-
+    /**
+     * Run Prim's algorithm picking first Point as the source
+     */
     private void run() {
         //initialize steps
         if (graph.getPoints() == 1){
@@ -42,7 +57,7 @@ class Prim {
                 //graph not connected
                 return;
             }
-            dist  += point.key;
+            minDist += point.key;
             for (Distance edge : graph.adj.get(point)) {
                 Point otherPoint = edge.endPoint;
                 if (point == otherPoint){
