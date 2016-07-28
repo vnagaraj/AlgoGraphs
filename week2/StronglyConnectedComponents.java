@@ -1,7 +1,12 @@
 package week2;
 import java.util.ArrayList;
-
-public class StronglyConnectedComponents{
+/**
+ * StronglyConnectedComponents class - compute the strongly connected components
+ *
+ * @author Vivekanand Ganapathy Nagarajan
+ * @version 2.0 July 28th, 2016
+ */
+class StronglyConnectedComponents{
 
     private DirectedGraph graph;
     private boolean[] visited;

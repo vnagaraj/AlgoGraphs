@@ -1,9 +1,14 @@
 package week2;
 
-public class CycleCheck {
+/**
+ * CycleCheck class - used to check cycles in directed graph
+ *
+ * @author Vivekanand Ganapathy Nagarajan
+ * @version 2.0 July 28th, 2016
+ */
+class CycleCheck {
     private DirectedGraph graph;
     private boolean[] visited;
-    private int cc =0;
 
     CycleCheck(DirectedGraph graph){
         this.graph = graph;

@@ -1,8 +1,13 @@
 package week2;
 
 import java.util.ArrayList;
-
-public class DirectedGraph{
+/**
+ * DirectedGraph class - used in StronglyConnectedComponents and TopologicalSort
+ *
+ * @author Vivekanand Ganapathy Nagarajan
+ * @version 2.0 July 28th, 2016
+ */
+class DirectedGraph{
 
     private int vertices; //no of vertices
     private int edges; //no of edges;

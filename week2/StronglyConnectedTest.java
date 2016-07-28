@@ -1,9 +1,14 @@
 package week2;
 
-import java.util.ArrayList;
-import java.util.Scanner;
 
-public class StronglyConnectedTest {
+import java.util.Scanner;
+/**
+ * StronglyConnectedTest class - test the StronglyConnectedComponents class
+ *
+ * @author Vivekanand Ganapathy Nagarajan
+ * @version 2.0 July 28th, 2016
+ */
+class StronglyConnectedTest {
 
 
     public static void main(String[] args) {

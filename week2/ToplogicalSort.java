@@ -1,5 +1,10 @@
 package week2;
-
+/**
+ * TopologicalSort class - compute the topological sort in directed acyclic graph
+ *
+ * @author Vivekanand Ganapathy Nagarajan
+ * @version 2.0 July 28th, 2016
+ */
 class ToplogicalSort {
     private DirectedGraph graph;
     private boolean[] visited;
