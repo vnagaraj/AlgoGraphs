@@ -1,5 +1,11 @@
 package week1;
 
+/**
+ * ConnectedComponents class - compute the connected components
+ *
+ * @author Vivekanand Ganapathy Nagarajan
+ * @version 2.0 July 28th, 2016
+ */
 class ConnectedComponents {
     private UndirectedGraph graph;
     private boolean[] visited;

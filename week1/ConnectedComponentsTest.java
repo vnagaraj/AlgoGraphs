@@ -1,6 +1,12 @@
 package week1;
 import java.util.Scanner;
 
+/**
+ * ConnectedComponentsTest class - test the ConnectedComponents
+ *
+ * @author Vivekanand Ganapathy Nagarajan
+ * @version 2.0 July 28th, 2016
+ */
 public class ConnectedComponentsTest {
 
     public static void main(String[] args) {

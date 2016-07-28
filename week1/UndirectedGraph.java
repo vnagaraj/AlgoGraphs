@@ -1,7 +1,12 @@
 package week1;
 
 import java.util.ArrayList;
-
+/**
+ * UndirectedGraph class - adj list representation of graph used by BFS/DFS
+ *
+ * @author Vivekanand Ganapathy Nagarajan
+ * @version 2.0 July 28th, 2016
+ */
 public class UndirectedGraph{
 
     private int vertices; //no of vertices
